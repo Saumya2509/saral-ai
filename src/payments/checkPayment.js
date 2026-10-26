@@ -27,9 +27,9 @@ export function checkPayment(user = {}, payment = {}, customConfig = {}) {
     steps.push('confirm.simple');
   }
 
-  // Young saver: over daily limit goes to guardian Meena
+  // Young saver: over daily limit goes to mother Priya Sharma
   const totalToday = (payment.amountPaise || 0) + (payment.spentToday || 0);
-  if (user.mode === 'young' && totalToday > cfg.dailyLimitPaise) {
+  if (user.mode === 'young' && totalToday > 500000) {
     steps.push('guardian.approve');
   }
 

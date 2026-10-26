@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { ArrowLeft, SettingsIcon, MicIcon, QrCodeIcon, SaralMarkIcon } from '../icons/Icons';
+import { ArrowLeft, SettingsIcon, MicIcon, QrCodeIcon, SaralMarkIcon, ShieldIcon } from '../icons/Icons';
 import VoiceControl from '../voice/VoiceControl';
 import QrScanner from '../ui/QrScanner';
 import { useStore } from '../../store/index.js';
@@ -23,6 +23,7 @@ export default function Header({
   const [isQrOpen, setIsQrOpen] = useState(false);
 
   const isHome = location.pathname === '/';
+  const isPayFlow = location.pathname.startsWith('/pay');
   const isPinScreen = location.pathname.includes('/pin');
   const isReceiptScreen = location.pathname.includes('/receipt');
   const bank = banks[state.settings.bankId] || banks.saral;
@@ -90,23 +91,20 @@ export default function Header({
               <span>{t('core.btn.back') || 'Back'}</span>
             </button>
           ) : isHome ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <img
+                src="/salar.svg"
+                alt="Saral Bank Logo"
                 style={{
-                  width: '30px',
-                  height: '30px',
-                  borderRadius: '9px',
-                  backgroundColor: 'var(--brand)',
-                  color: 'var(--brand-contrast)',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 4px 10px rgba(18, 59, 103, 0.2)',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '8px',
+                  boxShadow: '0 2px 8px rgba(18, 59, 103, 0.25)',
+                  objectFit: 'contain',
+                  flexShrink: 0,
                 }}
-              >
-                <SaralMarkIcon size={18} />
-              </span>
-              <span style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--brand)' }}>
+              />
+              <span style={{ fontWeight: 800, fontSize: '1.0625rem', color: 'var(--brand)', letterSpacing: '-0.02em' }}>
                 {bank.name[lang] || bank.name.en}
               </span>
             </div>
@@ -131,110 +129,134 @@ export default function Header({
         </h1>
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '4px', minWidth: '70px' }}>
-          {/* Quick QR Scanner Button */}
-          {!isPinScreen && !isReceiptScreen && (
-            <button
-              type="button"
-              onClick={() => setIsQrOpen(true)}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: 'var(--brand)',
-                padding: '6px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: '50%',
-              }}
-              aria-label={lang === 'hi' ? 'QR कोड स्कैन करें' : lang === 'ta' ? 'QR குறியீட்டை ஸ்கேன் செய்' : 'Scan QR code'}
-              title={lang === 'hi' ? 'QR कोड स्कैन करें' : lang === 'ta' ? 'QR குறியீட்டை ஸ்கேன் செய்' : 'Scan QR code'}
-              className="interactive-tap hover:bg-slate-100"
-            >
-              <QrCodeIcon size={22} />
-            </button>
-          )}
-
-          {/* Accessible Voice Assistant Button */}
-          {!isPinScreen && !isReceiptScreen && (
-            <button
-              type="button"
-              onClick={() => setIsVoiceOpen(true)}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: 'var(--brand)',
-                padding: '6px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: '50%',
-              }}
-              aria-label="Voice banking assistant"
-              title="Speak a banking command"
-              className="interactive-tap hover:bg-slate-100"
-            >
-              <MicIcon size={22} />
-            </button>
-          )}
-
-          {/* Profile Avatar Button */}
-          <button
-            type="button"
-            onClick={() => navigate('/profile')}
-            style={{
-              background: 'none',
-              border: 'none',
-              padding: '4px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: '50%',
-            }}
-            aria-label={lang === 'hi' ? 'उपभोक्ता प्रोफ़ाइल' : lang === 'ta' ? 'பயனர் சுயவிவரம்' : 'User Profile'}
-            title={customerName}
-            className="interactive-tap hover:bg-slate-100"
-          >
+          {isPayFlow ? (
+            /* Clean Security Badge for Payment Funnel */
             <div
               style={{
-                width: '26px',
-                height: '26px',
-                borderRadius: '50%',
-                backgroundColor: 'var(--brand)',
-                color: '#ffffff',
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
-                justifyContent: 'center',
+                gap: '5px',
+                backgroundColor: '#ecfdf5',
+                border: '1px solid #a7f3d0',
+                padding: '4px 10px',
+                borderRadius: '999px',
+                fontSize: '0.6875rem',
+                fontWeight: 700,
+                color: '#065f46',
+                letterSpacing: '0.02em',
               }}
             >
-              {initial}
+              <ShieldIcon size={12} />
+              <span>UPI 2.0</span>
             </div>
-          </button>
+          ) : (
+            <>
+              {/* Quick QR Scanner Button */}
+              {!isPinScreen && !isReceiptScreen && (
+                <button
+                  type="button"
+                  onClick={() => setIsQrOpen(true)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: 'var(--brand)',
+                    padding: '6px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '50%',
+                  }}
+                  aria-label={lang === 'hi' ? 'QR कोड स्कैन करें' : lang === 'ta' ? 'QR குறியீட்டை ஸ்கேன் செய்' : 'Scan QR code'}
+                  title={lang === 'hi' ? 'QR कोड स्कैन करें' : lang === 'ta' ? 'QR குறியீட்டை ஸ்கேன் செய்' : 'Scan QR code'}
+                  className="interactive-tap hover:bg-slate-100"
+                >
+                  <QrCodeIcon size={22} />
+                </button>
+              )}
 
-          {/* Settings Button */}
-          <button
-            type="button"
-            onClick={() => navigate('/settings')}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: 'var(--text-muted)',
-              padding: '6px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: '50%',
-            }}
-            aria-label={t('core.settings.title') || 'Settings'}
-            className="interactive-tap hover:bg-slate-100"
-          >
-            <SettingsIcon size={22} />
-          </button>
+              {/* Accessible Voice Assistant Button */}
+              {!isPinScreen && !isReceiptScreen && (
+                <button
+                  type="button"
+                  onClick={() => setIsVoiceOpen(true)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: 'var(--brand)',
+                    padding: '6px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '50%',
+                  }}
+                  aria-label="Voice banking assistant"
+                  title="Speak a banking command"
+                  className="interactive-tap hover:bg-slate-100"
+                >
+                  <MicIcon size={22} />
+                </button>
+              )}
+
+              {/* Profile Avatar Button */}
+              <button
+                type="button"
+                onClick={() => navigate('/profile')}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  padding: '4px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '50%',
+                }}
+                aria-label={lang === 'hi' ? 'उपभोक्ता प्रोफ़ाइल' : lang === 'ta' ? 'பயனர் சுயவிவரம்' : 'User Profile'}
+                title={customerName}
+                className="interactive-tap hover:bg-slate-100"
+              >
+                <div
+                  style={{
+                    width: '26px',
+                    height: '26px',
+                    borderRadius: '50%',
+                    backgroundColor: 'var(--brand)',
+                    color: '#ffffff',
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {initial}
+                </div>
+              </button>
+
+              {/* Settings Button */}
+              <button
+                type="button"
+                onClick={() => navigate('/settings')}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--text-muted)',
+                  padding: '6px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '50%',
+                }}
+                aria-label={t('core.settings.title') || 'Settings'}
+                className="interactive-tap hover:bg-slate-100"
+              >
+                <SettingsIcon size={22} />
+              </button>
+            </>
+          )}
         </div>
       </header>
 

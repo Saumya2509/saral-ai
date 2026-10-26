@@ -160,7 +160,7 @@ export default function GuardianView() {
 
   return (
     <Screen
-      title="Guardian Dashboard (Meena)"
+      title="Guardian Dashboard (Priya Sharma)"
       mainAction={{
         label: 'Switch to Aarav’s view',
         variant: 'secondary',
@@ -168,7 +168,7 @@ export default function GuardianView() {
       }}
     >
       <Notice type="info">
-        Managing Aarav’s Minor Account (15 yrs) · Supervised by Meena Mehta
+        Managing Aarav’s Minor Account (15 yrs) · Supervised by Mom (Priya Sharma)
       </Notice>
 
       {/* Aarav's Balance */}

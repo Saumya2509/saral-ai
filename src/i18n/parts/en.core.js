@@ -98,19 +98,6 @@ export default {
   'core.signin.signedInAs': 'Signed in as {{name}}',
   'core.signin.pinPlaceholder': '•',
 
-  // Biometric
-  'core.bio.title': 'Fingerprint Unlock',
-  'core.bio.ready': '1-Tap instant biometrics',
-  'core.bio.needPin': 'Log in with PIN once to turn on',
-  'core.bio.notAvailable': 'Not available on this device',
-  'core.bio.enrollPrompt': 'Turn on fingerprint for next time?',
-  'core.bio.enrollYes': 'Yes, Turn On',
-  'core.bio.enrollNotNow': 'Not Now',
-  'core.bio.enrollSuccess': 'Fingerprint is now on.',
-  'core.bio.errorFailed': 'Fingerprint did not work. Use your PIN.',
-  'core.bio.turnOff': 'Turn off fingerprint',
-  'core.bio.turnOn': 'Turn on fingerprint',
-
   // Settings
   'core.settings.title': 'Settings',
   'core.settings.language': 'Language',

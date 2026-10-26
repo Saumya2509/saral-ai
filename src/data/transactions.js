@@ -131,7 +131,7 @@ export function createSeedTransactions() {
     { name: 'Zomato Dining', type: 'UPI', plainEn: 'Restaurant meal', plainHi: 'रेस्टोरेंट' },
     { name: 'Amazon India', type: 'POS', plainEn: 'Online shopping', plainHi: 'ऑनलाइन शॉपिंग' },
     { name: 'Netflix Subscription', type: 'UPI', plainEn: 'Monthly streaming', plainHi: 'स्ट्रीमिंग सब्सक्रिप्शन' },
-    { name: 'Transfer to Mother (Meena)', type: 'IMPS', plainEn: 'Family support', plainHi: 'पारिवारिक सहायता' },
+    { name: 'Transfer to Family', type: 'IMPS', plainEn: 'Family support', plainHi: 'पारिवारिक सहायता' },
     { name: 'Shell Petrol Pump', type: 'POS', plainEn: 'Vehicle fuel', plainHi: 'पेट्रोल' },
   ];
 
@@ -214,7 +214,7 @@ export function createSeedTransactions() {
   // =========================================================================
   // 3. AARAV MEHTA (Age 15, Minor Student, Young Saver mode)
   // Opening: ₹50,000 (5000000 paise)
-  // Pocket money from Meena, snacks, books, stationery, small UPI spends
+  // Pocket money from Priya Sharma, snacks, books, stationery, small UPI spends
   // Keep daily outgoings small (< ₹1,000)
   // =========================================================================
   const aaravMerchants = [
@@ -225,7 +225,7 @@ export function createSeedTransactions() {
     { name: 'Science Museum Entry', type: 'UPI', plainEn: 'Educational visit ticket', plainHi: 'टिकट' },
   ];
 
-  // Aarav's weekly pocket money from Meena (12 weeks)
+  // Aarav's weekly pocket money from Priya Sharma (12 weeks)
   for (let w = 1; w <= 12; w++) {
     const d = new Date(2026, 9, 22);
     d.setDate(d.getDate() - (w * 7));
@@ -240,10 +240,10 @@ export function createSeedTransactions() {
       direction: 'in',
       amountPaise: 80000, // ₹800
       type: 'UPI',
-      counterparty: 'Meena Mehta',
-      raw: `UPI/CR/${ref}/MEENA MEHTA/SBNK`,
+      counterparty: 'Priya Sharma',
+      raw: `UPI/CR/${ref}/PRIYA SHARMA/SBNK`,
       ref,
-      plain: { en: 'Pocket money from Meena Mehta', hi: 'मीना मेहता से जेब खर्च प्राप्त हुआ' },
+      plain: { en: 'Pocket money from Mom (Priya Sharma)', hi: 'माँ (प्रिया शर्मा) से जेब खर्च प्राप्त हुआ' },
       parts: [
         { token: 'UPI', key: 'upi' },
         { token: 'CR', key: 'cr' },

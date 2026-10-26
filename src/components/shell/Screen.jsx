@@ -23,7 +23,7 @@ export default function Screen({
         position: 'relative',
         paddingBottom: hideTabBar
           ? mainAction
-            ? '90px'
+            ? '120px'
             : '24px'
           : mainAction
           ? '150px'
@@ -46,7 +46,7 @@ export default function Screen({
         {children}
       </main>
 
-      {/* Main Action Bar pinned above tab bar */}
+      {/* Main Action Bar pinned above bottom */}
       {mainAction && (
         <div
           style={{
@@ -58,12 +58,12 @@ export default function Screen({
             margin: '0 auto',
             backgroundColor: 'var(--surface)',
             borderTop: '1px solid var(--border)',
-            padding: '12px 16px',
+            padding: hideTabBar ? '14px 20px 20px 20px' : '12px 16px',
             display: 'flex',
             flexDirection: 'column',
             gap: '8px',
             zIndex: 25,
-            boxShadow: '0 -2px 10px rgba(0, 0, 0, 0.05)',
+            boxShadow: '0 -4px 20px rgba(0, 0, 0, 0.08)',
           }}
           className="main-action-bar no-print"
         >
@@ -82,16 +82,18 @@ export default function Screen({
               type="button"
               onClick={secondaryAction.onClick}
               style={{
-                background: 'none',
-                border: 'none',
-                color: 'var(--brand)',
+                background: 'transparent',
+                border: '1.5px solid var(--border)',
+                borderRadius: '12px',
+                color: 'var(--text-primary)',
                 fontSize: '0.875rem',
-                fontWeight: 500,
-                textDecoration: 'underline',
+                fontWeight: 600,
+                padding: '10px 14px',
                 cursor: 'pointer',
-                padding: '4px',
                 textAlign: 'center',
+                transition: 'all 0.15s ease',
               }}
+              className="interactive-tap hover:bg-slate-50"
             >
               {secondaryAction.label}
             </button>

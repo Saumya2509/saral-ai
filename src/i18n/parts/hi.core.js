@@ -98,19 +98,6 @@ export default {
   'core.signin.signedInAs': '{{name}} के रूप में साइन इन हैं',
   'core.signin.pinPlaceholder': '•',
 
-  // Biometric
-  'core.bio.title': 'फ़िंगरप्रिंट अनलॉक',
-  'core.bio.ready': '1-टैप त्वरित बायोमेट्रिक्स',
-  'core.bio.needPin': 'चालू करने के लिए एक बार पिन से लॉगिन करें',
-  'core.bio.notAvailable': 'इस डिवाइस पर उपलब्ध नहीं है',
-  'core.bio.enrollPrompt': 'क्या अगली बार के लिए फ़िंगरप्रिंट चालू करें?',
-  'core.bio.enrollYes': 'हाँ, चालू करें',
-  'core.bio.enrollNotNow': 'अभी नहीं',
-  'core.bio.enrollSuccess': 'फ़िंगरप्रिंट अब चालू है।',
-  'core.bio.errorFailed': 'फ़िंगरप्रिंट काम नहीं किया। अपना पिन उपयोग करें।',
-  'core.bio.turnOff': 'फ़िंगरप्रिंट बंद करें',
-  'core.bio.turnOn': 'फ़िंगरप्रिंट चालू करें',
-
   // Settings
   'core.settings.title': 'सेटिंग्स',
   'core.settings.language': 'भाषा',

@@ -52,7 +52,7 @@ export default function GuardianConsent() {
           Supervised Account for Aarav
         </h2>
         <p style={{ fontSize: '0.9375rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-          As Aarav's guardian (Meena Mehta), your permission is required to enable digital banking features.
+          As Aarav's mother (Priya Sharma), your permission is required to enable digital banking features.
         </p>
       </div>
 

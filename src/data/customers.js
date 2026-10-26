@@ -13,7 +13,7 @@ const customers = [
     openingBalancePaise: 15000000, // ₹1,50,000
     accountNumber: '2048 1023 4821',
     ifsc: 'SBNK0001234',
-    branch: { en: 'MG Road, Jammu', hi: 'एमजी रोड, जम्मू', ta: 'எம்.ஜி சாலை, ஜம்மு' },
+    branch: { en: 'MG Road, Jammu', hi: 'एमजी रोड, जम्मू', ta: 'எம்.ஜி. ரோடு, ஜம்மு' },
     mobile: '98765 43210',
     email: 'shankar@example.com',
     dailyLimitPaise: null,
@@ -29,7 +29,7 @@ const customers = [
     openingBalancePaise: 25000000, // ₹2,50,000
     accountNumber: '3072 5610 9384',
     ifsc: 'SBNK0005678',
-    branch: { en: 'Residency Road, Jammu', hi: 'रेसिडेंसी रोड, जम्मू', ta: 'ரெசிடென்சி சாலை, ஜம்மு' },
+    branch: { en: 'Residency Road, Jammu', hi: 'रेसिडेंसी रोड, जम्मू', ta: 'ரெசிடென்சி ரோடு, ஜம்மு' },
     mobile: '91234 56789',
     email: 'priya.sharma@example.com',
     dailyLimitPaise: null,
@@ -45,7 +45,7 @@ const customers = [
     openingBalancePaise: 5000000, // ₹50,000
     accountNumber: '1035 7782 6150',
     ifsc: 'SBNK0001234',
-    branch: { en: 'MG Road, Jammu', hi: 'एमजी रोड, जम्मू', ta: 'எம்.ஜி சாலை, ஜம்மு' },
+    branch: { en: 'MG Road, Jammu', hi: 'एमजी रोड, जम्मू', ta: 'எம்.ஜி. ரோடு, ஜம்மு' },
     mobile: '99887 76655',
     email: null,
     dailyLimitPaise: 100000, // ₹1,000
@@ -56,7 +56,7 @@ const customers = [
 const guardians = [
   {
     id: 'priya',
-    name: { en: 'Priya Sharma (Mom)', hi: 'प्रिया शर्मा (माँ)', ta: 'பிரியா சர்மா (அம்மா)' },
+    name: { en: 'Priya Sharma (Mom)', hi: 'प्रिया शर्मा (माँ)', ta: 'பிரியா சர்மா (தாய்)' },
     childId: 'aarav',
     mobile: '91234 56789',
   },

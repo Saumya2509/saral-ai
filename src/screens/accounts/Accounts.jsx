@@ -76,7 +76,7 @@ export default function Accounts() {
   };
 
   return (
-    <Screen title={lang === 'hi' ? 'खाते' : 'Accounts'} showBack={true}>
+    <Screen title={lang === 'hi' ? 'खाते' : lang === 'ta' ? 'கணக்குகள்' : 'Accounts'} showBack={true} onBack={() => navigate('/')}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
         {/* 1. Primary Savings Account Card (matches Screen 4 in mockup) */}
         <div

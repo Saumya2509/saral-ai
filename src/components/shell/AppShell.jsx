@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { Outlet, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { useStore } from '../../store/index.js';
 import config from '../../data/config.js';
 import AiFloatingButton from '../ui/AiFloatingButton.jsx';
@@ -44,7 +44,11 @@ export default function AppShell() {
       if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
       idleTimerRef.current = setTimeout(() => {
         if (state?.session?.customerId) {
+          try {
+            sessionStorage.removeItem('saral_active_customer');
+          } catch {}
           dispatch({ type: 'LOCK', payload: new Date().toISOString() });
+          dispatch({ type: 'SIGN_OUT' });
           navigate('/signin');
         }
       }, (config.idleLockSeconds || 120) * 1000);
@@ -59,6 +63,14 @@ export default function AppShell() {
       events.forEach((ev) => window.removeEventListener(ev, resetIdleTimer));
     };
   }, [state?.session?.customerId, dispatch, navigate]);
+
+  if (!state?.session?.customerId) {
+    const hasSeenSplash = typeof window !== 'undefined' && sessionStorage.getItem('saral_has_seen_splash');
+    if (!hasSeenSplash) {
+      return <Navigate to="/splash" replace />;
+    }
+    return <Navigate to="/signin" replace />;
+  }
 
   return (
     <div className="app-shell min-h-screen bg-fintech-mesh text-[var(--text-primary)]">

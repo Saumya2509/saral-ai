@@ -120,13 +120,13 @@ const payees = [
   {
     id: 'payee_aarav_1',
     customerId: 'aarav',
-    name: 'Meena Mehta',
-    accountNumber: 'XXXX XXXX 9901',
+    name: 'Priya Sharma',
+    accountNumber: '3072 5610 9384',
     ifsc: 'SBNK0001234',
     bank: 'Saral Bank',
     addedAt: '2026-08-20T10:00:00',
     isNew: false,
-    nickname: 'Mom (Guardian)',
+    nickname: 'Mom (Priya Sharma)',
   },
   {
     id: 'payee_aarav_2',

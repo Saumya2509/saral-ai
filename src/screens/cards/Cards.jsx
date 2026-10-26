@@ -325,47 +325,49 @@ export default function Cards() {
           </div>
         </button>
 
-        {/* 3. Set Limits */}
-        <button
-          type="button"
-          onClick={() => setShowLimitsModal(true)}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            gap: '8px',
-            padding: '16px',
-            borderRadius: '16px',
-            backgroundColor: 'var(--surface)',
-            border: '1.5px solid var(--border)',
-            cursor: 'pointer',
-            textAlign: 'left',
-          }}
-          className="interactive-tap hover:border-purple-400"
-        >
-          <div
+        {/* 3. Set Limits - Not for young saver Aarav */}
+        {!isYoung && (
+          <button
+            type="button"
+            onClick={() => setShowLimitsModal(true)}
             style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '12px',
-              backgroundColor: '#f3e8ff',
-              color: '#9333ea',
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              gap: '8px',
+              padding: '16px',
+              borderRadius: '16px',
+              backgroundColor: 'var(--surface)',
+              border: '1.5px solid var(--border)',
+              cursor: 'pointer',
+              textAlign: 'left',
             }}
+            className="interactive-tap hover:border-purple-400"
           >
-            <ShieldIcon size={20} />
-          </div>
-          <div>
-            <div style={{ fontWeight: 700, fontSize: '0.9375rem', color: 'var(--text-primary)' }}>
-              {lang === 'hi' ? 'सीमाएं सेट करें' : 'Set Limits'}
+            <div
+              style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '12px',
+                backgroundColor: '#f3e8ff',
+                color: '#9333ea',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <ShieldIcon size={20} />
             </div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-              ATM & Online Spends
+            <div>
+              <div style={{ fontWeight: 700, fontSize: '0.9375rem', color: 'var(--text-primary)' }}>
+                {lang === 'hi' ? 'सीमाएं सेट करें' : 'Set Limits'}
+              </div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                ATM & Online Spends
+              </div>
             </div>
-          </div>
-        </button>
+          </button>
+        )}
 
         {/* 4. Manage Card */}
         <button
@@ -476,8 +478,8 @@ export default function Cards() {
             </div>
             <div style={{ fontSize: '0.75rem', color: '#047857', marginTop: '2px' }}>
               {lang === 'hi'
-                ? 'दैनिक सीमा ₹1,000 सक्रिय है। कार्ड सुरक्षा आपके अभिभावक मीना द्वारा प्रबंधित है।'
-                : 'Daily spending limit is ₹1,000. Card security is monitored by your guardian Meena.'}
+                ? 'दैनिक सीमा ₹5,000 सक्रिय है। कार्ड सुरक्षा आपकी माँ प्रिया शर्मा द्वारा प्रबंधित है।'
+                : 'Daily spending limit is ₹5,000. Card security is monitored by your mother Priya Sharma.'}
             </div>
           </div>
         </div>

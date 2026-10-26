@@ -6,7 +6,6 @@ import Card from '../../components/ui/Card';
 import StatusTimeline from '../../components/records/StatusTimeline';
 import BigButton from '../../components/ui/BigButton';
 import Notice from '../../components/ui/Notice';
-import SaralAiLogo from '../../components/ui/SaralAiLogo';
 import {
   PhoneIcon,
   MailIcon,
@@ -16,7 +15,6 @@ import {
   ShieldIcon,
   UserIcon,
   CheckIcon,
-  SparklesIcon,
 } from '../../components/icons/Icons';
 import { useStore } from '../../store/index.js';
 import { useI18n } from '../../i18n/index.js';
@@ -63,13 +61,6 @@ export default function Services() {
           overflow: 'hidden',
         }}
       >
-        <ListRow
-          icon={<SaralAiLogo size={24} animated />}
-          title={lang === 'hi' ? 'सरल एआई सहायता (Help Chat)' : 'Saral AI Help Chat'}
-          subtitle={lang === 'hi' ? 'बैंकिंग से जुड़े कोई भी सवाल पूछें' : 'Instant AI answers for all your banking queries'}
-          chevron
-          onClick={() => navigate('/help/chat')}
-        />
         <ListRow
           icon={<PhoneIcon size={20} />}
           title={t('rec.services.updateMobile') || 'Update mobile number'}

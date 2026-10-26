@@ -98,6 +98,7 @@ export default function Profile() {
   };
 
   const handleLogout = () => {
+    try { sessionStorage.removeItem('saral_active_customer'); } catch {}
     dispatch({ type: 'SIGN_OUT' });
     navigate('/signin');
   };
@@ -171,6 +172,17 @@ export default function Profile() {
       icon: '👥',
       onClick: () => navigate('/payees'),
     },
+    ...(customerId === 'priya'
+      ? [
+          {
+            id: 'guardian',
+            title: lang === 'hi' ? 'अभिभावक डैशबोर्ड (आरव की निगरानी)' : 'Guardian Dashboard (Aarav Mehta)',
+            subtitle: 'Supervise Aarav’s spending, limits & approvals',
+            icon: '👨‍👦',
+            onClick: () => navigate('/guardian'),
+          },
+        ]
+      : []),
     {
       id: 'accounts',
       title: lang === 'hi' ? 'बैंक खाते' : 'Bank Accounts',
@@ -683,3 +695,4 @@ export default function Profile() {
     </Screen>
   );
 }
+
